@@ -11,20 +11,11 @@ import com.lesfurets.jenkins.unit.BasePipelineTest
 
 class SayHelloTest extends BasePipelineTest {
 
-    String sharedLibs = this.class.getResource('./').getFile()
-
-
-
     @Override
     @Before
     void setUp() throws Exception {
 
-        println sharedLibs
-
-        String dirPath = new File( System.getProperty("user.dir") )
-                .getAbsoluteFile()
-                .getParentFile()
-                .getAbsolutePath()
+        String sharedLibs = this.class.getResource('./').getFile()
 
         def library = library()
                 .name('nextlayerci-example')
@@ -36,29 +27,14 @@ class SayHelloTest extends BasePipelineTest {
                 .build()
         helper.registerSharedLibrary(library)
 
-//        setBaseScriptRoot()
-        setScriptRoots([ 'src', 'vars', 'test/groovy', 'test/resources', 'test/pipelines', './' ] as String[])
+        setScriptRoots([ 'src', 'vars', 'test/groovy' ] as String[])
         setScriptExtension('groovy')
-
-
-
-
-/*
-        helper.registerAllowedMethod('node', )
-*/
 
         super.setUp()
     }
 
     @Test
     void should_execute_without_errors() throws Exception {
-
-        println("hallo")
-
-
-
-
-        /*Script script = loadScript("io/nextlayer/ci/pipelines/docker/BuildPipeline.groovy")*/
         Script script = loadScript("HelloPipeline.groovy")
         script.execute()
         printCallStack()
