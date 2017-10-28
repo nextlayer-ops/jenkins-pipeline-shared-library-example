@@ -1,0 +1,64 @@
+
+
+//apply plugin: 'groovy'
+
+
+plugins {
+    id("com.mkobit.jenkins.pipelines.shared-library") version "0.2.0"
+}
+
+group 'io.nextlayer.ci'
+version '0.1-SNAPSHOT'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+/*
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
+*/
+
+task initLibraries(type: Copy){
+    from('./') {
+        include 'src/**/*'
+        include 'vars/**/*'
+    }
+    into 'build/classes/groovy/test/nextlayerci-example@master'
+
+    println("init")
+}
+
+test.dependsOn initLibraries
+
+dependencies {
+    //compile 'org.codehaus.groovy:groovy-all:2.4.6'
+    //testCompile 'junit:junit:4.12'
+    //testCompile 'com.lesfurets:jenkins-pipeline-unit:1.1'
+    /*testCompile 'commons-io:commons-io:2.5'
+    testCompile 'com.cloudbees:groovy-cps:1.12'
+    testCompile 'org.slf4j:slf4j-simple:1.7.25'*/
+    testImplementation(group: 'junit', name: 'junit', version: '4.12')
+}
+
+sharedLibrary {
+    pipelineTestUnitVersion = "1.1"
+    groovyVersion = "2.4.12"
+    coreVersion = "2.73"
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src']
+        }
+    }
+
+    test {
+        groovy {
+            srcDirs = ['test']
+        }
+    }
+}
