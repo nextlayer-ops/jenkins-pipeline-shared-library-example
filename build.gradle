@@ -32,6 +32,7 @@ sharedLibrary {
 sourceSets {
     main {
         groovy {
+            // don't add vars - it's loaded dynamic!
             srcDirs = ['src']
         }
     }
