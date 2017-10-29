@@ -12,6 +12,11 @@ repositories {
     jcenter()
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2.1'
+}
+
+
 task initLibraries(type: Copy){
     from('./') {
         include 'src/**/*'
