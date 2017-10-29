@@ -5,7 +5,10 @@ plugins {
 group 'io.nextlayer.ci'
 version '0.1-SNAPSHOT'
 
+sourceCompatibility = 1.8
+
 repositories {
+    mavenCentral()
     jcenter()
 }
 
