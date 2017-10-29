@@ -20,6 +20,8 @@ task initLibraries(type: Copy){
 test.dependsOn initLibraries
 
 dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+    testCompile 'junit:junit:4.12'
     testImplementation(group: 'junit', name: 'junit', version: '4.12')
 }
 
