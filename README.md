@@ -2,6 +2,8 @@
 
 This repository contains examples of a Jenkins Shared/Global Library with Unit tests.
 
+[![Build Status](https://travis-ci.org/nextlayer-ops/jenkins-pipeline-shared-library-example.svg?branch=master)](https://travis-ci.org/nextlayer-ops/jenkins-pipeline-shared-library-example)
+
 ## Features
 
 * **Gradle** for dependency management and test configuration (using [shared-libraries-gradle-plugin](https://github.com/mkobit/jenkins-pipeline-shared-libraries-gradle-plugin))
